@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css"/>
+    <title>History</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="favicon.png" type="image/vnd.microsoft.icon"/>
+    <link rel="icon" href="favicon.png" type="image/vnd.microsoft.icon"/>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.3/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+</head>
+<script>
+    var landing = angular.module('landing', []);
+    landing.controller('landingCtrl', function ($scope, $http) {
+
+        /**
+         * authenticates the user
+         */
+        $scope.doGoogleAuth = function() {
+            var get_call = $http.get('/login');
+            get_call.success(function(data) {
+                window.location = data.auth_url;
+            });
+        };
+    });
+</script>
+<body background="images/opacity3.png" ng-app ="landing" ng-controller="landingCtrl">
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row">
+        <p></p>
+    </div>
+    <div class="row login-box">
+        <div class="col s12 m6  offset-m3 center-align">
+            <div class="card white lighten-5">
+                <div class="card-content white-text z-depth-3">
+                    <span class="card-title"><h1 class="blue-text"><b>History Insights</b></h1></span>
+                    <p class="grey-text">A place to know more about you from your browsing history</p>
+                    <br>
+                    <p class="black-text">History is an application developed to find interesting patterns and predictions in user browsing history. Don't worry your data is completely secured
+                    and not subjected to any manipulation other than running some interesting analytics.</p>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <a class="waves-effect waves-light red btn pulse" ng-click="doGoogleAuth()"><i class="mdi mdi-google"></i>&nbsp&nbsp&nbspLogin with Google</a>
+                    </div>
+                    <div class="row">
+                        <p class="grey-text darken-4">Using google oauth2 to authenticate user</p>
+                    </div>
+                    <div class="row">
+                        <p class="grey-text darken-4">By signing up you indicate that you have read and agree to the Terms of Service and Privacy Policy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--        <div class="valign-wrapper row login-box">
+            <div class="col s12 m6  offset-m3">
+                <div class="card white lighten-5">
+                    <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+</body>
+</html>
